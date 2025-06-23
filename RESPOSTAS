@@ -1,0 +1,102 @@
+**A - I) Quais são os valores máximos e mínimos de valor compra ?**
+
+valor MAX compra = 1495.890000 
+valor MIN compra = 71.320000
+
+**A - II) Há dados ausentes ou inconsistentes ?**
+
+R: Contagem de valores ausentes por coluna:
+
+ID_Cliente         0
+Idade              0
+Localização        0
+Canal_Aquisição    0
+Produto            0
+Valor_Compra       0
+Data_Compra        0
+dtype: int64
+
+Valores únicos para colunas categóricas (para identificar inconsistências):
+    Localização: ['Rio de Janeiro' 'Porto Alegre' 'Belo Horizonte' 'Curitiba' 'São Paulo']
+    Canal_Aquisição: ['Redes Sociais' 'E-mail Marketing' 'Indicação' 'Pago' 'Orgânico']
+    Produto: ['Produto C' 'Produto D' 'Produto A' 'Produto B']
+
+
+**A - III) Como se comportam variáveis numéricas (média, mediana, desvio-padrão) ?**
+
+--- Análise e Interpretação ---
+ **Idade:
+    - Média: 43.14 anos.
+    - Mediana (50%): 44.00 anos.
+    - Desvio Padrão: 14.00 anos.
+    -> A idade média é próxima da mediana, sugerindo uma distribuição relativamente simétrica.
+    -> O desvio padrão é considerável, indicando uma ampla variação de idades entre os clientes (de 18 a 64 anos).
+
+ Valor de Compra:
+    - Média: R$ 913.72.
+    - Mediana (50%): R$ 962.99.
+    - Desvio Padrão: R$ 392.41.
+    -> A mediana é ligeiramente maior que a média, o que pode indicar uma leve assimetria com mais valores menores, mas com alguns valores maiores que puxam a média.
+    -> O desvio padrão é alto em relação à média, o que aponta para uma grande variabilidade nos valores das compras, de R$ 71.32 a R$ 1495.89.
+
+**A - IV) Clientes de determinada localidade compram mais um certo produto ?**
+
+--- Análise de Produtos por Localidade ---
+Número de compras de cada produto por Localização:
+Produto         Produto A  Produto B  Produto C  Produto D
+Localização
+Belo Horizonte          2          1          0          1
+Curitiba                5          8          0          0
+Porto Alegre            1          7          4          3
+Rio de Janeiro          3          2          3          1
+São Paulo               1          3          1          4
+
+Sim, há preferências. A combinação (Localização, Produto) com o maior número de compras é: ('Curitiba', 'Produto B'), com 8 compras.
+
+Para uma análise mais detalhada, você pode observar a tabela acima e identificar o produto com maior número de vendas para cada localidade individualmente.
+
+**A - V) Qual canal de aquisição traz mais receita?**
+
+--- Análise de Receita por Canal de Aquisição ---
+Receita total por Canal de Aquisição:
+Canal_Aquisição
+Orgânico            12441.08
+Pago                 9994.17
+E-mail Marketing     8151.95
+Redes Sociais        7620.52
+Indicação            7478.50
+Name: Valor_Compra, dtype: float64
+
+O canal de aquisição que traz mais receita é: 'Orgânico' com um total de R$ 12441.08.
+
+
+**A - VI) Existem valores fora do esperado ?**
+
+--- Verificação de Valores Fora do Esperado (Outliers e Inconsistências Lógicas) ---
+
+Análise da Coluna: Idade
+Mínimo: 18, Máximo: 64
+Nenhum outlier significativo detectado na coluna 'Idade' pelo método IQR.
+--------------------------------------------------
+
+Análise da Coluna: Valor_Compra
+Mínimo: 71.32, Máximo: 1495.89
+Nenhum outlier significativo detectado na coluna 'Valor_Compra' pelo método IQR.
+--------------------------------------------------
+
+Análise da Coluna: Data_Compra
+Nenhuma data de compra no futuro detectada.
+Data de Compra mais Antiga: 10/06/2024
+Data de Compra mais Recente: 07/06/2025
+--------------------------------------------------
+
+Análise de Colunas Categóricas:
+Valores únicos para 'Localização': ['Rio de Janeiro' 'Porto Alegre' 'Belo Horizonte' 'Curitiba' 'São Paulo']
+Valores únicos para 'Canal_Aquisição': ['Redes Sociais' 'E-mail Marketing' 'Indicação' 'Pago' 'Orgânico']
+Valores únicos para 'Produto': ['Produto C' 'Produto D' 'Produto A' 'Produto B']
+Estas colunas parecem consistentes e sem valores fora do esperado com base nas categorias presentes.
+--------------------------------------------------
+
+
+--- RESUMO GERAL ---
+Com base na análise, não foram encontrados valores significativamente fora do esperado (outliers ou inconsistências lógicas óbvias).
